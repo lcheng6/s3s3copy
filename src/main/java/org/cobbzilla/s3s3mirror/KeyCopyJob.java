@@ -137,9 +137,11 @@ public class KeyCopyJob extends KeyJob {
             return metadata.getContentLength() != summary.getSize();
         }
         final boolean objectChanged = objectChanged(metadata);
-        if (verbose && !objectChanged) log.info("Destination file is same as source, not copying: "+ key);
+        if (verbose && !objectChanged) log.info("Destination file is same as source, copying anyways: "+ key);
 
-        return objectChanged;
+        return true;
+
+        //return objectChanged;
     }
 
     boolean objectChanged(ObjectMetadata metadata) {
