@@ -1,14 +1,11 @@
-s3s3mirror
+s3s3copy
 ==========
 
-A utility for mirroring content from one S3 bucket to another.
+A utility for copying content from one S3 bucket to another.
 
 Designed to be lightning-fast and highly concurrent, with modest CPU and memory requirements.
 
-An object will be copied if and only if at least one of the following holds true:
-
-* The object does not exist in the destination bucket.
-* The size or ETag of the object in the destination bucket are different from the size/ETag in the source bucket.
+An object will be copied regardless of conditions. 
 
 When copying, the source metadata and ACL lists are also copied to the destination object.
 
