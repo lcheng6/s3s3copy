@@ -130,36 +130,37 @@ I encourage you to port them to the 2.x branch, if you have the ability.
 
 Copy everything from a bucket named "source" to another bucket named "dest"
 
-    s3s3mirror.sh source dest
+    s3s3copy.sh source dest
 
 Copy everything from "source" to "dest", but only copy objects created or modified within the past week
 
-    s3s3mirror.sh -c 7 source dest
-    s3s3mirror.sh -c 7d source dest
-    s3s3mirror.sh -c 1w source dest
-    s3s3mirror.sh --ctime 1w source dest
+    s3s3copy.sh -c 7 source dest
+    s3s3copy.sh -c 7d source dest
+    s3s3copy.sh -c 1w source dest
+    s3s3copy.sh --ctime 1w source dest
 
 Copy everything from "source/foo" to "dest/bar"
 
-    s3s3mirror.sh source/foo dest/bar
-    s3s3mirror.sh -p foo -d bar source dest
+    s3s3copy.sh source/foo dest/bar
+    s3s3copy.sh -p foo -d bar source dest
 
 Copy everything from "source/foo" to "dest/bar" and delete anything in "dest/bar" that does not exist in "source/foo"
 
-    s3s3mirror.sh -X source/foo dest/bar
-    s3s3mirror.sh --delete-removed source/foo dest/bar
-    s3s3mirror.sh -p foo -d bar -X source dest
-    s3s3mirror.sh -p foo -d bar --delete-removed source dest
+    s3s3copy.sh -X source/foo dest/bar
+    s3s3copy.sh --delete-removed source/foo dest/bar
+    s3s3copy.sh -p foo -d bar -X source dest
+    s3s3copy.sh -p foo -d bar --delete-removed source dest
 
 Copy within a single bucket -- copy everything from "source/foo" to "source/bar"
 
-    s3s3mirror.sh source/foo source/bar
-    s3s3mirror.sh -p foo -d bar source source
+    s3s3copy.sh source/foo source/bar
+    s3s3copy.sh -p foo -d bar source source
 
 BAD IDEA: If copying within a single bucket, do *not* put the destination below the source
 
-    s3s3mirror.sh source/foo source/foo/subfolder
-    s3s3mirror.sh -p foo -d foo/subfolder source source
+    s3s3copy.sh source/foo source/foo/subfolder
+    s3s3copy.sh -p foo -d foo/subfolder source source
 *This might cause recursion and raise your AWS bill unnecessarily*
 
-###### If you've enjoyed using s3s3mirror and are looking for a warm-fuzzy feeling, consider dropping a little somethin' into my [tip jar](https://cobbzilla.org/tipjar.html)
+###### If you've enjoyed using s3s3mirror and are looking for a warm-fuzzy feeling, consider dropping a little somethin' into cobbzilla's [tip jar](https://cobbzilla.org/tipjar.html)
+###### The original code is not done by Liang Cheng.  Liang has only made minor modification to cobbzilla's code base. 
