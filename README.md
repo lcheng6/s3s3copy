@@ -1,7 +1,7 @@
 s3s3copy
 ==========
 
-A utility for copying content from one S3 bucket to another.  The change over the s3s3mirror program is to override all logic conditions in s3s3mirror so that this program will copy and overwrite from source to destination no matter the content
+A utility for copying content from one S3 bucket to another.  The delta between this program and the s3s3mirror program is to remove all logic conditions in s3s3mirror to ensure all orgin files will overwrite destination files.  
 
 An object will be copied regardless of conditions. 
 
