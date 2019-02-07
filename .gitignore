@@ -4,7 +4,6 @@ tmp
 logs
 dependency-reduced-pom.xml
 *~
-target/conf
 *.log
 .settings
 .classpath
