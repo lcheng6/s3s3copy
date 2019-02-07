@@ -46,7 +46,11 @@ Prior to building this program on Amazon Linux EC2 you should install some devel
     sudo yum install -y apache-maven
     mvn --version
     
-    #This part is *manual* source of this information is https://stackoverflow.com/questions/20108411/switch-to-jdk-7-in-amazon-linux
+    #install openjdk 1.7.0, which is required to run and/or compile this program
+    sudo yum install -y java-1.7.0-openjdk.x86_64
+    
+    #This part is *manual* 
+    #source of this information is https://stackoverflow.com/questions/20108411/switch-to-jdk-7-in-amazon-linux
     #Verify Java OpenJDK is installed
     sudo yum search openjdk # should list your java version
     
@@ -69,6 +73,8 @@ Prior to building this program on Amazon Linux EC2 you should install some devel
     # + 2           java-1.7.0-openjdk.x86_64 (/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.201-2.6.16.1.amzn2.0.1.x86_64/jre/bin/java)
     # 
     #Enter to keep the current selection[+], or type selection number: 2
+   
+    #End manual section
     
     #compile this program... Good Time! 
     mvn package
