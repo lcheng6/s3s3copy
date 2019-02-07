@@ -34,7 +34,7 @@ Which makes me wonder if there is any way to do this faster. I'm sure there must
 *Note*: currently there are problems compiling under Java 8. If you're including s3s3mirror in a larger project that uses Java8, compile
 it with Java 7 first, and compile your other code with Java 8. It should be fine to run with Java 8, just some issues with the compiler.
 
-### Building
+### Building the project on your system
 
 Prior to building this program on Amazon Linux EC2 you should install some development packages, and set the java JRE to 1.7.  Follow this instructions first:
     
@@ -73,16 +73,16 @@ Prior to building this program on Amazon Linux EC2 you should install some devel
     #compile this program... Good Time! 
     mvn package
 
-Note that s3s3mirror now has a prebuilt jar checked in to github, so you'll only need to do this if you've been playing with the source code.
+Note that s3s3copy now has a prebuilt jar checked in to github, so you'll only need to do this if you've been playing with the source code.
 The above command requires that Maven 3 is installed.
 
 ### License
 
-s3s3mirror is available under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+s3s3copy is available under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
 ### Usage
 
-    s3s3mirror.sh [options] <source-bucket>[/src-prefix/path/...] <destination-bucket>[/dest-prefix/path/...]
+    s3s3copy.sh [options] <source-bucket>[/src-prefix/path/...] <destination-bucket>[/dest-prefix/path/...]
 
 ### Versions
 
