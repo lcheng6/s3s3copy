@@ -1,11 +1,11 @@
 s3s3copy
 ==========
 
-A utility for copying content from one S3 bucket to another.
-
-Designed to be lightning-fast and highly concurrent, with modest CPU and memory requirements.
+A utility for copying content from one S3 bucket to another.  The change over the s3s3mirror program is to override all logic conditions in s3s3mirror so that this program will copy and overwrite from source to destination no matter the content
 
 An object will be copied regardless of conditions. 
+
+Designed to be lightning-fast and highly concurrent, with modest CPU and memory requirements.  In AWS, it is recommended to use a machine class that has high network throughput such as t2.xlarge or higher, or the new t3.large or higher.  
 
 When copying, the source metadata and ACL lists are also copied to the destination object.
 
@@ -36,6 +36,41 @@ it with Java 7 first, and compile your other code with Java 8. It should be fine
 
 ### Building
 
+Prior to building this program on Amazon Linux EC2 you should install some development packages, and set the java JRE to 1.7.  Follow this instructions first:
+    
+    sudo yum groupinstall "Development Tools" #installs most compilers git etc. 
+    
+    #install Maven (Java package manager and verify install)
+    sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo 
+    sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+    sudo yum install -y apache-maven
+    mvn --version
+    
+    #This part is *manual* source of this information is https://stackoverflow.com/questions/20108411/switch-to-jdk-7-in-amazon-linux
+    #Verify Java OpenJDK is installed
+    sudo yum search openjdk # should list your java version
+    
+    #here you should verify that you have 1.6 or 1.7 installed. 
+    #[ec2-user@ip-10-0-1-252 s3s3copy]$ rpm -qa | grep openjdk
+    #java-1.8.0-openjdk-headless-1.8.0.191.b12-0.amzn2.x86_64
+    #java-1.7.0-openjdk-headless-1.7.0.201-2.6.16.1.amzn2.0.1.x86_64
+    #java-1.7.0-openjdk-devel-1.7.0.201-2.6.16.1.amzn2.0.1.x86_64
+    #java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+    #java-1.7.0-openjdk-1.7.0.201-2.6.16.1.amzn2.0.1.x86_64
+    
+    #use this tool to select java 1.7 for compiler and run time
+    sudo update-alternatives --config java 
+    
+    #There are 2 programs which provide 'java'.
+    
+    # Selection    Command
+    #-----------------------------------------------
+    #*  1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64/jre/bin/java)
+    # + 2           java-1.7.0-openjdk.x86_64 (/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.201-2.6.16.1.amzn2.0.1.x86_64/jre/bin/java)
+    # 
+    #Enter to keep the current selection[+], or type selection number: 2
+    
+    #compile this program... Good Time! 
     mvn package
 
 Note that s3s3mirror now has a prebuilt jar checked in to github, so you'll only need to do this if you've been playing with the source code.
