@@ -168,5 +168,5 @@ BAD IDEA: If copying within a single bucket, do *not* put the destination below 
     s3s3copy.sh -p foo -d foo/subfolder source source
 *This might cause recursion and raise your AWS bill unnecessarily*
 
-###### If you've enjoyed using s3s3mirror and are looking for a warm-fuzzy feeling, consider dropping a little somethin' into cobbzilla's [tip jar](https://cobbzilla.org/tipjar.html)
-###### The original code is not done by Liang Cheng.  Liang has only made minor modification to cobbzilla's code base. 
+###### If you've enjoyed using s3s3mirror or s3s3copy program and are looking for a warm-fuzzy feeling, consider dropping a little somethin' into cobbzilla's [tip jar](https://cobbzilla.org/tipjar.html)
+###### The original s3s3mirror is written by cobbzilla.  Liang Cheng has only made minor modification to cobbzilla's code base. 
