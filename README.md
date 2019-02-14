@@ -1,7 +1,7 @@
 s3s3copy
 ==========
 
-A utility for copying content from one S3 bucket to another.  The delta between this program and the s3s3mirror program is to remove all logic conditions in s3s3mirror to ensure all orgin files will overwrite destination files.  
+A utility for copying content from one S3 bucket to another.  The difference between s3s3copy and original s3s3mirror is that s3s3copy will absolutely overwrite destination files.  
 
 An object will be copied regardless of conditions. 
 
@@ -19,6 +19,8 @@ chosen "chunk size" and to operate in a highly-threaded, streaming fashion, so m
 
 Running with 100 threads, I found the gating factor to be *how fast I could list items from the source bucket* (!?!)
 Which makes me wonder if there is any way to do this faster. I'm sure there must be, but this is pretty damn fast.
+
+As of 2019, throughput of copying large number of moderately sized objects (MB to GB) cross s3 buckets in the same region is well over 10TB/hour a.  
 
 ### AWS Credentials
 
